@@ -1,4 +1,5 @@
 use peacock::graphics::{self, Animation, Image, Rectangle, View};
+use peacock::scenegraph::SceneObject;
 use peacock::window;
 use peacock::{Context, ContextBuilder, Result, State};
 
@@ -10,6 +11,7 @@ const WINDOW_HEIGHT: f32 = 240.0;
 
 struct GameState {
     animation: Animation,
+    player: SceneObject,
 }
 
 impl GameState {
@@ -25,13 +27,16 @@ impl GameState {
             8,
         );
 
-        Self { animation }
+        let player = SceneObject::new();
+
+        Self { animation, player }
     }
 }
 
 impl State for GameState {
     fn update(&mut self, _ctx: &mut Context) -> Result<()> {
         self.animation.tick();
+        self.player.draw();
 
         Ok(())
     }
