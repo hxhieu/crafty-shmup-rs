@@ -1,3 +1,4 @@
 [submodule "peacock"]
 	path = peacock
 	url = git@github.com:hxhieu/peacock.git
+	branch = dev/hugh
